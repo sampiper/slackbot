@@ -35,9 +35,13 @@ app.route('/devices')
   })
 
   function getDeviceList () {
-    var promise = dashboard.sm.listDevices('N_647392446434531551')
-      .then(data => return data)
-      .catch(error => console.log(error));
+    dashboard.sm.listDevices('N_647392446434531551')
+      .then(function(data) {
+        console.log(data)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 
   app.listen(3000, () => console.log('Server running on port 3000'))
