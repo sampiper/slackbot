@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-
+const dashboard = require('node-meraki-dashboard')('6f2bd675a1b83710271a81dc141611241da484dd')
 
 const VERIFY_TOKEN = '8XkWoOTBKelGQkiExVgH5sbH'
 if (!VERIFY_TOKEN) {
@@ -25,7 +25,7 @@ app.route('/devices')
     var message = 'hello!'
 
     if (req.body.text === 'list') {
-      message = "Sorry, I can't do that yet."
+      message = getDeviceList().toString()
     }
 
     res.json({
@@ -33,6 +33,11 @@ app.route('/devices')
       text: message
     })
   })
+
+  function getDeviceList () {
+    var deviceList = dashboard.sm.listDevices('N_647392446434531551')
+    return deviceList
+  }
 
   app.listen(3000, () => console.log('Server running on port 3000'))
 

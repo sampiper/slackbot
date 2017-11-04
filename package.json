@@ -21,7 +21,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "node-meraki-dashboard": "0.0.6"
   },
   "devDependencies": {
     "pm2": "^2.7.2"
