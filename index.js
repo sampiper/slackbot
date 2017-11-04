@@ -12,7 +12,7 @@ if (!VERIFY_TOKEN) {
 const app = express()
 app.use(morgan('dev'))
 
-app.route('/')
+app.route('/devices')
   .get(function (req, res) {
     res.sendStatus(200)
   })
