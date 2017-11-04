@@ -35,7 +35,7 @@ app.route('/devices')
   })
 
   function getDeviceList () {
-    dashboard.sm.listDevices('N_647392446434531551')
+    var promise = dashboard.sm.listDevices('N_647392446434531551')
       .then(data => return data)
       .catch(error => console.log(error));
   }
