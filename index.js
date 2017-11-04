@@ -10,7 +10,7 @@ if (!VERIFY_TOKEN) {
 }
 
 const app = express()
-//app.use(morgan('dev'))
+app.use(morgan('dev'))
 
 app.route('/devices')
   .get(function (req, res) {
