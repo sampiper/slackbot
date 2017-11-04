@@ -6,8 +6,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
 
-app.get('/', (req, res) => {
-  var token = req.body.token
+app.get('/devices', (req, res) => {
+  var token = req.token
   res.send('Hello!' + token)
 })
 app.listen(3000, () => console.log('Server running on port 3000'))
