@@ -24,6 +24,10 @@ app.route('/')
 
     var message = 'hello!'
 
+    if (req.body.text === 'list') {
+      message = "Sorry, I can't do that yet."
+    }
+
     res.json({
       response_type: 'ephemeral',
       text: message
