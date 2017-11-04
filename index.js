@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 
 
-const VERIFY_TOKEN = 'PE2RVQhhy8OURCI5kipNpKRa'
+const VERIFY_TOKEN = '8XkWoOTBKelGQkiExVgH5sbH'
 if (!VERIFY_TOKEN) {
   console.error('VERIFY_TOKEN is required')
   process.exit(1)
