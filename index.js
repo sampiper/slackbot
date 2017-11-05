@@ -30,20 +30,21 @@ app.route('/devices')
 
     }
 
-    res.json({
-      response_type: 'ephemeral',
-      text: message
-    })
+    getDeviceList(res);
+
   })
 
-  function getDeviceList () {
-    dashboard.sm.listDevices('N_647392446434531551')
-      .then(function(data) {
-        return data
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+function getDeviceList(res) {
+  dashboard.sm.listDevices('N_647392446434531551')
+    .then(function(data) {
+     res.json({
+       respose_type: 'ephemeral',
+       text: data
+     });
+    })
+    .catch(function(error) {
+      console.log(error)
+    });
   }
 
   app.listen(3000, () => console.log('Server running on port 3000'))
