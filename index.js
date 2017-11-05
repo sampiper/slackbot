@@ -25,7 +25,7 @@ app.route('/devices')
     var message = 'hello!'
 
     if (req.body.text === 'list') {
-      message = getDeviceList().toString()
+      message = getDeviceList()
     }
 
     res.json({
@@ -40,7 +40,7 @@ app.route('/devices')
         return data
       })
       .catch(function(error) {
-        console.log('hi')
+        console.log(error)
       })
   }
 
