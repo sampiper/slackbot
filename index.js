@@ -31,6 +31,7 @@ app.route('/devices')
     }
 
 
+
   })
 
 function getDeviceList(res) {
@@ -38,7 +39,7 @@ function getDeviceList(res) {
     .then(function(data) {
      res.json({
        respose_type: 'ephemeral',
-       text: data.devices.toString()
+       text: data.devices[0].toString()
      });
     })
     .catch(function(error) {
