@@ -39,7 +39,7 @@ function getDeviceList(res) {
     .then(function(data) {
      res.json({
        respose_type: 'ephemeral',
-       text: data
+       text: data.toString()
      });
     })
     .catch(function(error) {
