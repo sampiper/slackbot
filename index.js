@@ -26,11 +26,10 @@ app.route('/devices')
     var message = 'hello!'
 
     if (req.body.text === 'list') {
-      message = getDeviceList().devices[0].name
+      getDeviceList(res);
 
     }
 
-    getDeviceList(res);
 
   })
 
