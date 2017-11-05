@@ -35,12 +35,12 @@ app.route('/devices')
   })
 
   function getDeviceList () {
-    var deviceList = dashboard.sm.listDevices('N_647392446434531551')
+    dashboard.sm.listDevices('N_647392446434531551')
       .then(function(data) {
         return data
       })
       .catch(function(error) {
-        console.log(error)
+        console.log('hi')
       })
   }
 
