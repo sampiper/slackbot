@@ -27,19 +27,27 @@ app.route('/devices')
 
     if (req.body.text === 'list') {
       getDeviceList(res);
-
     }
 
-
-
+    else {
+      res.json({
+        respose_type: 'ephemeral',
+        text: 'hiya!'
+      });
+    }
   })
 
 function getDeviceList(res) {
   dashboard.sm.listDevices('N_647392446434531551')
     .then(function(data) {
+      var totalDevices = data.devices.length;
+      var list = '';
+      for (var i=0; i<totalDevices; i++) {
+        list = list + '\n' + data.devices[i].name
+      }
      res.json({
        respose_type: 'ephemeral',
-       text: data.devices[0].name
+       text: list
      });
     })
     .catch(function(error) {
