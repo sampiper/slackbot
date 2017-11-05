@@ -43,7 +43,14 @@ function getDeviceList(res) {
       var totalDevices = data.devices.length;
       var list = '';
       for (var i=0; i<totalDevices; i++) {
+        if (data.devices[i].osName.startsWith('Android')) {
+          list = list + ':android: '
+        }
+        else if (data.devices[i].osName.startsWith('iOS')) {
+          list = list + ':apple_logo: '
+        }
         list = list + '\n' + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')'
+
       }
      res.json({
        response_type: 'ephemeral',
