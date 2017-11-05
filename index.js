@@ -26,6 +26,7 @@ app.route('/devices')
 
     if (req.body.text === 'list') {
       message = getDeviceList()
+      message = message[0][0]
     }
 
     res.json({
