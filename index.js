@@ -49,7 +49,7 @@ function getDeviceList(res) {
         else if (data.devices[i].osName.startsWith('iOS')) {
           list = list + ':apple_logo: '
         }
-        list = list + '\n' + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')'
+        list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
 
       }
      res.json({
