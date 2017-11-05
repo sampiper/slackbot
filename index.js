@@ -31,7 +31,7 @@ app.route('/devices')
 
     else {
       res.json({
-        respose_type: 'ephemeral',
+        response_type: 'ephemeral',
         text: 'hiya!'
       });
     }
@@ -43,10 +43,10 @@ function getDeviceList(res) {
       var totalDevices = data.devices.length;
       var list = '';
       for (var i=0; i<totalDevices; i++) {
-        list = list + '\n' + data.devices[i].name
+        list = list + '\n' + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')'
       }
      res.json({
-       respose_type: 'ephemeral',
+       response_type: 'ephemeral',
        text: list
      });
     })
