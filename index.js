@@ -1,10 +1,12 @@
+require('dotenv').config()
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
 const dashboard = require('node-meraki-dashboard')(process.env.MERAKI_API_KEY)
 
-require('dotenv').config();
+
 
 const VERIFY_TOKEN = process.env.SLACK_DEVICES_TOKEN
 
