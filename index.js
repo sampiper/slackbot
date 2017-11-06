@@ -2,9 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
-const dashboard = require('node-meraki-dashboard')('6f2bd675a1b83710271a81dc141611241da484dd')
+const dashboard = require('node-meraki-dashboard')(process.env.MERAKI_API_KEY)
 
-const VERIFY_TOKEN = '8XkWoOTBKelGQkiExVgH5sbH'
+require('dotenv').config();
+
+const VERIFY_TOKEN = process.env.SLACK_DEVICES_TOKEN
+
 if (!VERIFY_TOKEN) {
   console.error('VERIFY_TOKEN is required')
   process.exit(1)
@@ -38,7 +41,7 @@ app.route('/devices')
   })
 
 function getDeviceList(res) {
-  dashboard.sm.listDevices('N_647392446434531551')
+  dashboard.sm.listDevices(process.env.MERAKI_NETWORK_ID)
     .then(function(data) {
       var totalDevices = data.devices.length;
       var list = '';

@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "node-meraki-dashboard": "0.0.6"
