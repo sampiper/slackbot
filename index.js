@@ -3,11 +3,11 @@ const VERIFY_TOKEN   = process.env.SLACK_DEVICES_TOKEN
 const MERAKI_API_KEY = process.env.MERAKI_API_KEY
 const MERAKI_NET_ID  = process.env.MERAKI_NETWORK_ID
 
-const express = require('express')
+const express    = require('express')
 const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const axios = require('axios')
-const dashboard = require('node-meraki-dashboard')(MERAKI_API_KEY)
+//const morgan     = require('morgan')
+const axios      = require('axios')
+const dashboard  = require('node-meraki-dashboard')(MERAKI_API_KEY)
 
 if (!VERIFY_TOKEN) {
   console.error('VERIFY_TOKEN is required')
@@ -15,7 +15,7 @@ if (!VERIFY_TOKEN) {
 }
 
 const app = express()
-app.use(morgan('dev'))
+//app.use(morgan('dev'))
 
 app.route('/devices')
   .get(function (req, res) {
@@ -28,7 +28,6 @@ app.route('/devices')
     }
 
     var message = 'hello!'
-
     if (req.body.text === 'list') {
       getDeviceList(res);
     }
