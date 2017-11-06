@@ -1,14 +1,13 @@
-require('dotenv').config()
+require('dotenv').config() // Get API keys from .env
+const VERIFY_TOKEN   = process.env.SLACK_DEVICES_TOKEN
+const MERAKI_API_KEY = process.env.MERAKI_API_KEY
+const MERAKI_NET_ID  = process.env.MERAKI_NETWORK_ID
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
-const dashboard = require('node-meraki-dashboard')(process.env.MERAKI_API_KEY)
-
-
-
-const VERIFY_TOKEN = process.env.SLACK_DEVICES_TOKEN
+const dashboard = require('node-meraki-dashboard')(MERAKI_API_KEY)
 
 if (!VERIFY_TOKEN) {
   console.error('VERIFY_TOKEN is required')
@@ -43,7 +42,7 @@ app.route('/devices')
   })
 
 function getDeviceList(res) {
-  dashboard.sm.listDevices(process.env.MERAKI_NETWORK_ID)
+  dashboard.sm.listDevices(MERAKI_NET_ID)
     .then(function(data) {
       var totalDevices = data.devices.length;
       var list = '';
