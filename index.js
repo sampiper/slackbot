@@ -5,7 +5,6 @@ const MERAKI_NET_ID  = process.env.MERAKI_NETWORK_ID
 
 const express    = require('express')
 const bodyParser = require('body-parser')
-//const morgan     = require('morgan')
 const axios      = require('axios')
 const dashboard  = require('node-meraki-dashboard')(MERAKI_API_KEY)
 
@@ -15,7 +14,6 @@ if (!VERIFY_TOKEN) {
 }
 
 const app = express()
-//app.use(morgan('dev'))
 
 app.route('/devices')
   .get(function (req, res) {
