@@ -27,8 +27,9 @@ app.route('/devices')
       return res.sendStatus(401)
     }
 
-    var message = 'hello!'
-    if (req.body.text === 'list') {
+    var message = req.body.text.toLowerCase() // Get text after /devices, convert to lowercase
+
+    if (message === 'list') {
       getDeviceList(res);
     }
 
@@ -63,6 +64,18 @@ function getDeviceList(res) {
     .catch(function(error) {
       console.log(error)
     });
+  }
+
+  function getDevicesWithOS(res) {
+    dashboard.sm.listDevices(MERAKI_NET_ID)
+      .then(function(data) {
+        var totalDevices = data.devices.length
+        var list = ''
+        for (var i=0; i<totalDevices; i++) {
+          if (data.devices[i].osName.startsWith('Android')) {
+            list = list + ':android: ' + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
+          }
+      })
   }
 
   app.listen(3000, () => console.log('Server running on port 3000'))
