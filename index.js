@@ -28,8 +28,6 @@ app.route('/devices')
     var message = req.body.text.toLowerCase() // Get text after /devices, convert to lowercase
     var args = message.split(" ")
 
-    switch(message.StartsWith())
-
     if (message.startsWith('list')) {
       getDeviceList(res,args);
     }
