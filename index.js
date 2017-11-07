@@ -59,7 +59,7 @@ function getDeviceList(res,args) {
       }
 
       else {
-        for (var j=1; os<args.length; j++) {
+        for (var j=1; j<args.length; j++) {
           list = '*Devices running ' + args[j] + ':*\n'
           for (var i=0; i<totalDevices; i++) {
             var deviceOS = data.devices[i].osName.toLowerCase()
