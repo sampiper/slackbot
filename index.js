@@ -58,7 +58,7 @@ function getDeviceList(res,args) {
         }
       }
 
-      else {
+/*      else {
         var totalArgs = args.length
         for (var j=1; j<totalArgs; j++) {
           list = '*Devices running ' + args[j] + ':*\n'
@@ -69,7 +69,7 @@ function getDeviceList(res,args) {
             }
           }
         }
-      }
+      }*/
 
      res.json({
        response_type: 'ephemeral',
