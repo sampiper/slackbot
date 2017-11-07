@@ -41,7 +41,7 @@ app.route('/devices')
     else {
       res.json({
         response_type: 'ephemeral',
-        text: '*How to use the TAB Devicebot...* :iphone:\n\n1) View a list of all devices:\n`/devices list`\nView all devices running a specific OS version.:\n`/devices os [Android *.* | iOS *.*]`'
+        text: '*How to use the TAB Devicebot...* :iphone:\n\nView a list of all devices:\n`/devices list`\n\nView all devices running a specific OS version:\n`/devices os [Android *.* | iOS *.*]`'
       });
     }
   })
