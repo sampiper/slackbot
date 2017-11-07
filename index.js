@@ -28,8 +28,16 @@ app.route('/devices')
     var message = req.body.text.toLowerCase() // Get text after /devices, convert to lowercase
     var args = message.split(" ")
 
-    if (args[0] === 'list') {
+    switch(message.StartsWith())
+
+    if (message.startsWith('list')) {
       getDeviceList(res,args);
+    }
+
+    else if (message.startsWith('os')) {
+      var deviceOS =  message.slice(2).trim() //get text after /os, remove leading space
+      args = ['os', deviceOS]
+      getDeviceList(res, args)
     }
 
     else {
@@ -58,7 +66,7 @@ function getDeviceList(res,args) {
         }
       }
 
-      else {
+      else { //
         var totalArgs = args.length
         for (var j=1; j<totalArgs; j++) {
           var requestedOS = args[j]
