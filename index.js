@@ -57,6 +57,19 @@ function getDeviceList(res,args) {
           list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
         }
       }
+
+      else {
+        for (var j=1; os<args.length; j++) {
+          list = '*Devices running ' + args[j] + ':*\n'
+          for (var i=0; i<totalDevices; i++) {
+            var deviceOS = data.devices[i].osName.toLowerCase()
+            if (deviceOS.startsWith(arg[j]) {
+              list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
+            }
+          }
+        }
+      }
+
      res.json({
        response_type: 'ephemeral',
        text: list
