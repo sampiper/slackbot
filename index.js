@@ -64,10 +64,9 @@ function getDeviceList(res,args) {
           list = '*Devices running ' + args[j] + ':*\n'
           for (var i=0; i<totalDevices; i++) {
             var deviceOS = data.devices[i].osName.toLowerCase()
-            list = list + deviceOS + '\n'
-          /*  if (deviceOS.startsWith(arg[j]) {
+            if (deviceOS.startsWith(args[j]) {
               list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
-            }*/
+            }
           }
         }
       }
