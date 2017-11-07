@@ -26,33 +26,36 @@ app.route('/devices')
     }
 
     var message = req.body.text.toLowerCase() // Get text after /devices, convert to lowercase
+    var args = message.split(" ")
 
-    if (message === 'list') {
-      getDeviceList(res);
+    if (args[0] === 'list') {
+      getDeviceList(res,args);
     }
 
     else {
       res.json({
         response_type: 'ephemeral',
-        text: 'hiya!'
+        text: ':wave:'
       });
     }
   })
 
-function getDeviceList(res) {
+function getDeviceList(res,args) {
   dashboard.sm.listDevices(MERAKI_NET_ID)
     .then(function(data) {
       var totalDevices = data.devices.length;
       var list = '';
-      for (var i=0; i<totalDevices; i++) {
-        if (data.devices[i].osName.startsWith('Android')) {
-          list = list + ':android: '
-        }
-        else if (data.devices[i].osName.startsWith('iOS')) {
-          list = list + ':apple_logo: '
-        }
-        list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
 
+      if(!args[1]) {
+        for (var i=0; i<totalDevices; i++) {
+          if (data.devices[i].osName.startsWith('Android')) {
+            list = list + ':android: '
+          }
+          else if (data.devices[i].osName.startsWith('iOS')) {
+            list = list + ':apple_logo: '
+          }
+          list = list + data.devices[i].name + ' - ' + data.devices[i].systemModel + ' (' + data.devices[i].osName + ')' + '\n'
+        }
       }
      res.json({
        response_type: 'ephemeral',
