@@ -36,8 +36,8 @@ app.route('/devices')
 
     else if (message.startsWith('os')) {
       var deviceOS =  message.slice(2).trim() //get text after /os, remove leading space
-      args = ['os', deviceOS]
-      getDeviceList(res, args)
+      var input = ['os', deviceOS]
+      getDeviceList(res,input)
     }
 
     else {
